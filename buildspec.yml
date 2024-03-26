@@ -19,5 +19,5 @@ phases:
       - echo "Uploading to S3"
       - aws s3 cp deployment_package.zip s3://git-doordash-zn/
       - echo "Updating Lambda function via s3..."
-      - aws lambda update-function-code --function-name git-dhoordash-zn --s3-bucket git-doordash-zn --s3-key 
+      - aws lambda update-function-code --function-name git-dhoordash-zn --s3-bucket git-doordash-zn --s3-key deployment_package.zip
       - echo "Deployment Complete!"
