@@ -1,6 +1,12 @@
-import pandas as pd
 import json
+import pandas as pd
 import boto3
+import io
+from datetime import date
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def lambda_handler(event, context):
@@ -67,7 +73,7 @@ def lambda_handler(event, context):
 def publish_to_sns(message):
     sns = boto3.client('sns')
     # Replace with your SNS topic ARN
-    topic_arn = 'arn:aws:sns:us-east-1:661916559814:doordash-notification'
+    topic_arn = os.getenv('TopicArn')
     sns.publish(
         TopicArn=topic_arn,
         Message=message
